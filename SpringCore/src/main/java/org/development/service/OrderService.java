@@ -25,6 +25,6 @@ public class OrderService {
 
     @PreDestroy
     public void end(){
-        System.out.println("end() from OrderService");
+        System.out.println("end() from OrderServicef");
     }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+    <bean id="paymentService" class="org.development.PaymentService" primary="true" lazy-init="true">
+        <constructor-arg index="0" name="paymentType" value="UPI"/>
+        <constructor-arg index="1" name="retryCount" value="0"/>
+    </bean>
+
+    <bean id="orderService" name="orderServiceBean" class="org.development.OrderService" scope="prototype">
+<!--        <constructor-arg ref="paymentService"/> constructor injection-->
+        <property name="paymentService" ref="paymentService"/>  <!-- setter injection -->
+    </bean>
+
+    <bean id="userService"
+          name="userService1"
+          class="org.development.UserService"
+          primary="true"
+          scope="singleton"
+          lazy-init="false"
+          init-method="init"
+          destroy-method="destroy">
+        <constructor-arg name="users">
+            <list>
+                <value>Saad</value>
+                <value>Ansari</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>
