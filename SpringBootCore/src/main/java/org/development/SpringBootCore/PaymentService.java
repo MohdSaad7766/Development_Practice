@@ -22,7 +22,7 @@ public class PaymentService implements ApplicationRunner , CommandLineRunner {
         System.out.println("CommandLineRunner.run()");
         getPaymentProperties();
     }
-    
+
     @Override
     public void run(ApplicationArguments args){
         System.out.println("ApplicationRunner.run()");
